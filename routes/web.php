@@ -8,5 +8,6 @@ Route::get('/', function () {
 });
 
 //Eleve
+Route::get('/eleves', [EleveController::class, 'index'])->name('eleves.index');
 Route::get('/eleves/create', [EleveController::class, 'create'])->name('eleves.create');
 Route::post('/eleves', [EleveController::class, 'store'])->name('eleves.store');

@@ -9,6 +9,13 @@ use Illuminate\Support\Facades\Validator;
 
 class EleveController extends Controller
 {
+    public function index()
+    {
+        // Récupérer tous les élèves avec une pagination de 10 par page
+        $eleves = Eleve::paginate(10);
+        return view('eleves.index', compact('eleves'));
+    }
+
     // Afficher le formulaire d'ajout
     public function create()
     {
