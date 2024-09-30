@@ -23,6 +23,7 @@
                 <th>Numéro Étudiant</th>
                 <th>Email</th>
                 <th>Image</th>
+                <th>Actions</th>
             </tr>
             </thead>
             <tbody>
@@ -40,6 +41,14 @@
                         @else
                             Pas d'image
                         @endif
+                    </td>
+                    <td>
+                        <!-- Formulaire de suppression -->
+                        <form action="{{ route('eleves.destroy', $eleve->id) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE') <!-- Indique que la méthode est DELETE -->
+                            <button type="submit" class="btn btn-danger">Supprimer</button>
+                        </form>
                     </td>
                 </tr>
             @endforeach

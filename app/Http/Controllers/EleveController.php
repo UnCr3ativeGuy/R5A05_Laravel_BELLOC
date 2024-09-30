@@ -16,6 +16,14 @@ class EleveController extends Controller
         return view('eleves.index', compact('eleves'));
     }
 
+    public function destroy($id)
+    {
+        $eleve = Eleve::findOrFail($id);
+        $eleve->delete();
+
+        return redirect()->route('eleves.index')->with('success', 'Élève supprimé avec succès!');
+    }
+
     // Afficher le formulaire d'ajout
     public function create()
     {
