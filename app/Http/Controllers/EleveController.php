@@ -50,6 +50,15 @@ class EleveController extends Controller
         return redirect()->route('eleves.index')->with('success', 'Élève mis à jour avec succès!');
     }
 
+    public function show($id)
+    {
+        // Find the student by ID or fail if not found
+        $eleve = Eleve::findOrFail($id);
+
+        // Return the view with the student's data
+        return view('eleves.show', compact('eleve'));
+    }
+
     // Afficher le formulaire d'ajout
     public function create()
     {
