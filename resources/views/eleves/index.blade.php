@@ -43,6 +43,9 @@
                         @endif
                     </td>
                     <td>
+                        <!-- Lien vers le formulaire de modification -->
+                        <a href="{{ route('eleves.edit', $eleve->id) }}" class="btn btn-warning">Modifier</a>
+
                         <!-- Formulaire de suppression -->
                         <form action="{{ route('eleves.destroy', $eleve->id) }}" method="POST" style="display:inline;">
                             @csrf

@@ -105,6 +105,15 @@ h1 {
     background-color: #c82333; /* Darker red on hover */
 }
 
+.btn-warning {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-warning:hover {
+    background-color: #003bff;
+}
+
 /* Pagination styles */
 .pagination {
     display: flex; /* Flexbox for pagination items */

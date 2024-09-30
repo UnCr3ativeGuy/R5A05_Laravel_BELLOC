@@ -24,6 +24,32 @@ class EleveController extends Controller
         return redirect()->route('eleves.index')->with('success', 'Élève supprimé avec succès!');
     }
 
+    public function edit($id)
+    {
+        $eleve = Eleve::findOrFail($id);
+        return view('eleves.edit', compact('eleve'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'prénom' => 'required|string|max:255',
+            'date_naissance' => 'required|date',
+            'numéro_étudiant' => 'required|string|max:255',
+            'email' => 'required|email|unique:eleves,email,' . $id, // Ignore the current student's email
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $eleve = Eleve::findOrFail($id);
+        $eleve->update($request->all());
+
+        return redirect()->route('eleves.index')->with('success', 'Élève mis à jour avec succès!');
+    }
+
     // Afficher le formulaire d'ajout
     public function create()
     {
