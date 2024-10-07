@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EleveController;
+use App\Http\Controllers\EvaluationController;
 use App\Http\Controllers\ModuleController;
 use Illuminate\Support\Facades\Route;
 
@@ -10,6 +11,9 @@ Route::get('/', function () {
 
 //Module
 Route::resource('modules', ModuleController::class);
+
+//Evaluation
+Route::resource('evaluations', EvaluationController::class);
 
 //Eleve
 Route::resource('eleves', EleveController::class);
