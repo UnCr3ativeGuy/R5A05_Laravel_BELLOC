@@ -6,5 +6,7 @@
         <li><a href="{{ route('modules.create') }}">Ajouter un Module</a></li>
         <li><a href="{{ route('evaluations.index') }}">Liste des Evaluations</a></li>
         <li><a href="{{ route('evaluations.create') }}">Ajouter une Evaluation</a></li>
+        <li><a href="{{ route('evaluationEleve.index') }}">Liste des Notes</a></li>
+        <li><a href="{{ route('evaluationEleve.create') }}">Ajouter une Note</a></li>
     </ul>
 </div>

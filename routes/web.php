@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\EleveController;
 use App\Http\Controllers\EvaluationController;
+use App\Http\Controllers\EvaluationEleveController;
 use App\Http\Controllers\ModuleController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,9 @@ Route::resource('modules', ModuleController::class);
 
 //Evaluation
 Route::resource('evaluations', EvaluationController::class);
+
+//EvaluationEleve
+Route::resource('evaluationEleve', EvaluationEleveController::class);
 
 //Eleve
 Route::resource('eleves', EleveController::class);

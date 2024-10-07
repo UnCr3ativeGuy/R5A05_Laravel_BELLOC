@@ -20,4 +20,9 @@ class Evaluation extends Model
     {
         return $this->belongsTo(Module::class);
     }
+
+    public function evaluationEleves()
+    {
+        return $this->hasMany(EvaluationEleve::class);
+    }
 }
