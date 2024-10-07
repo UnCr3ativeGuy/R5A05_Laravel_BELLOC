@@ -8,6 +8,7 @@
 </head>
 <body>
 <div class="container">
+    @include('layouts.menu')
     <h1>Profil de l'Étudiant</h1>
 
     <div class="card">

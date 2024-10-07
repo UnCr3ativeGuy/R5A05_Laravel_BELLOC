@@ -1,11 +1,15 @@
 <?php
 
 use App\Http\Controllers\EleveController;
+use App\Http\Controllers\ModuleController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Module
+Route::resource('modules', ModuleController::class);
 
 //Eleve
 Route::resource('eleves', EleveController::class);

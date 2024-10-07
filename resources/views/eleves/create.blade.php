@@ -8,6 +8,7 @@
 </head>
 <body>
 <div class="container">
+    @include('layouts.menu')
     <h1>Ajouter un Élève</h1>
 
     @if(session('success'))

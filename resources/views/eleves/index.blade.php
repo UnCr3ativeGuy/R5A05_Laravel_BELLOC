@@ -8,6 +8,7 @@
 </head>
 <body>
 <div class="container">
+    @include('layouts.menu')
     <h1>Liste des Élèves</h1>
 
     @if($eleves->isEmpty())

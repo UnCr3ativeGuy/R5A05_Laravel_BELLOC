@@ -8,6 +8,7 @@
 </head>
 <body>
 <div class="container">
+    @include('layouts.menu')
     <h1>Modifier Élève</h1>
 
     <form action="{{ route('eleves.update', $eleve->id) }}" method="POST">
