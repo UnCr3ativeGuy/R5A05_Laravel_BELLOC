@@ -34,6 +34,14 @@
                     <td>{{ $evaluation->coefficient }}</td>
                     <td>{{ $evaluation->module->nom }}</td> <!-- Assurez-vous que vous avez une relation dans le modèle -->
                     <td>
+                        <div class="mb-3">
+                            <a href="{{ route('notes.evaluation', $evaluation->id) }}" class="btn btn-secondary">Voir la Liste des notes des Eleves</a>
+                        </div>
+
+                        <div class="mb-3">
+                            <a href="{{ route('notes.insuffisants', $evaluation->id) }}" class="btn btn-secondary">Voir la Liste des Eleves qui ont échoués</a>
+                        </div>
+
                         <a href="{{ route('evaluations.edit', $evaluation->id) }}" class="btn btn-warning">Modifier</a>
 
                         <form action="{{ route('evaluations.destroy', $evaluation->id) }}" method="POST" style="display:inline;">

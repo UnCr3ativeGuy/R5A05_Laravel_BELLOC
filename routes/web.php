@@ -4,6 +4,7 @@ use App\Http\Controllers\EleveController;
 use App\Http\Controllers\EvaluationController;
 use App\Http\Controllers\EvaluationEleveController;
 use App\Http\Controllers\ModuleController;
+use App\Http\Controllers\NotesController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -18,6 +19,12 @@ Route::resource('evaluations', EvaluationController::class);
 
 //EvaluationEleve
 Route::resource('evaluationEleve', EvaluationEleveController::class);
+
+//Notes
+Route::get('/notes/evaluation/{id}', [NotesController::class, 'showEvaluation'])->name('notes.evaluation');
+Route::get('/notes/eleve/{id}', [NotesController::class, 'showEleve'])->name('notes.eleve');
+Route::get('/notes/insuffisants/{id}', [NotesController::class, 'showInsuffisants'])->name('notes.insuffisants');
+
 
 //Eleve
 Route::resource('eleves', EleveController::class);

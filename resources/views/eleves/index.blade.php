@@ -44,6 +44,9 @@
                         @endif
                     </td>
                     <td>
+                        <div class="mb-3">
+                            <a href="{{ route('notes.eleve', $eleve->id) }}" class="btn btn-secondary">Voir la Liste des Evaluation de l'eleve</a>
+                        </div>
                         <!-- Lien vers le formulaire de modification -->
                         <a href="{{ route('eleves.edit', $eleve->id) }}" class="btn btn-warning">Modifier</a>
 
