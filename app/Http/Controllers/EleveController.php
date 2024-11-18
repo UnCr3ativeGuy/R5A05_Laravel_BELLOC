@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Eleve;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Validator;use Illuminate\Support\Facades\Storage;
 
 class EleveController extends Controller
 {
@@ -36,7 +36,8 @@ class EleveController extends Controller
             'prénom' => 'required|string|max:255',
             'date_naissance' => 'required|date',
             'numéro_étudiant' => 'required|string|max:255',
-            'email' => 'required|email|unique:eleves,email,' . $id, // Ignore the current student's email
+            'email' => 'required|email|unique:eleves,email,' . $id,
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
         if ($validator->fails()) {
@@ -44,10 +45,28 @@ class EleveController extends Controller
         }
 
         $eleve = Eleve::findOrFail($id);
-        $eleve->update($request->all());
+        $eleve->update([
+            'name' => $request->name,
+            'prénom' => $request->prénom,
+            'date_naissance' => $request->date_naissance,
+            'numéro_étudiant' => $request->numéro_étudiant,
+            'email' => $request->email,
+        ]);
+
+        if ($request->hasFile('image')) {
+            if ($eleve->image) {
+                Storage::delete('public/' . $eleve->image);
+            }
+
+            $imagePath = $request->file('image')->store('images', 'public');
+
+            $eleve->image = $imagePath;
+            $eleve->save();
+        }
 
         return redirect()->route('eleves.index')->with('success', 'Élève mis à jour avec succès!');
     }
+
 
     public function show($id)
     {

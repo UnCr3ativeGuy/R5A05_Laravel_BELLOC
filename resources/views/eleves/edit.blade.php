@@ -11,7 +11,7 @@
     @include('layouts.menu')
     <h1>Modifier Élève</h1>
 
-    <form action="{{ route('eleves.update', $eleve->id) }}" method="POST">
+    <form action="{{ route('eleves.update', $eleve->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
@@ -39,6 +39,12 @@
             <label for="email">Email</label>
             <input type="email" name="email" id="email" class="form-control" value="{{ $eleve->email }}" required>
         </div>
+
+        <div class="form-group">
+            <label for="image">Image</label>
+            <input type="file" name="image" id="image" class="form-control">
+        </div>
+
 
         <button type="submit" class="btn btn-primary">Mettre à jour</button>
         <a href="{{ route('eleves.index') }}" class="btn btn-secondary">Annuler</a>

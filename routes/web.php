@@ -6,6 +6,8 @@ use App\Http\Controllers\EvaluationEleveController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\NotesController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ImageUploadController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -28,6 +30,8 @@ Route::get('/notes/insuffisants/{id}', [NotesController::class, 'showInsuffisant
 
 //Eleve
 Route::resource('eleves', EleveController::class);
+Route::post('/upload-image', [ImageUploadController::class, 'store'])->name('upload.image');
+
 //Route::get('/eleves', [EleveController::class, 'index'])->name('eleves.index');
 //Route::delete('/eleves/{id}', [EleveController::class, 'destroy'])->name('eleves.destroy');
 //Route::get('/eleves/{id}/edit', [EleveController::class, 'edit'])->name('eleves.edit');

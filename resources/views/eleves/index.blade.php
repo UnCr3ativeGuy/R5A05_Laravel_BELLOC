@@ -38,7 +38,7 @@
                     <td>{{ $eleve->email }}</td>
                     <td>
                         @if($eleve->image)
-                            <img src="{{ asset('storage/' . $eleve->image) }}" alt="Image de {{ $eleve->name }}" style="width: 50px; height: auto;">
+                            <img src="{{ asset('storage/' . $eleve->image) }}" alt="Image" style="max-width: 100px;">
                         @else
                             Pas d'image
                         @endif
