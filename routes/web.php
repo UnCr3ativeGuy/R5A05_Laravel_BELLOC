@@ -30,7 +30,6 @@ Route::get('/notes/insuffisants/{id}', [NotesController::class, 'showInsuffisant
 
 //Eleve
 Route::resource('eleves', EleveController::class);
-Route::post('/upload-image', [ImageUploadController::class, 'store'])->name('upload.image');
 
 //Route::get('/eleves', [EleveController::class, 'index'])->name('eleves.index');
 //Route::delete('/eleves/{id}', [EleveController::class, 'destroy'])->name('eleves.destroy');
