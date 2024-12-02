@@ -22,6 +22,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::middleware(['auth', 'can:prof'])->group(function () {
+    Route::resource('eleves', EleveController::class);
+    Route::resource('modules', ModuleController::class);
+    Route::resource('evaluations', EvaluationController::class);
+    Route::resource('evaluationEleve', EvaluationEleveController::class);
+});
+
 Route::middleware(['auth'])->group(function () {
     Route::get('eleves', [EleveController::class, 'index'])->name('eleves.index');
     Route::get('eleves/{eleve}', [EleveController::class, 'show'])->name('eleves.show');
@@ -31,13 +38,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('evaluations', [EvaluationController::class, 'index'])->name('evaluations.index');
     Route::get('evaluations/{evaluation}', [EvaluationController::class, 'show'])->name('evaluations.show');
-});
-
-Route::middleware(['auth', 'can:prof'])->group(function () {
-    Route::resource('eleves', EleveController::class);
-    Route::resource('modules', ModuleController::class);
-    Route::resource('evaluations', EvaluationController::class);
-    Route::resource('evaluationEleve', EvaluationEleveController::class);
 });
 
 //Notes
