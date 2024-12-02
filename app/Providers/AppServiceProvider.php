@@ -20,19 +20,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Gate::define('manage-eleves', function ($user) {
-            return $user->role === 'prof';
-        });
-
-        Gate::define('manage-modules', function ($user) {
-            return $user->role === 'prof';
-        });
-
-        Gate::define('manage-evaluations', function ($user) {
-            return $user->role === 'prof';
-        });
-
-        Gate::define('manage-evaluationEleve', function ($user) {
+        Gate::define('prof', function ($user) {
             return $user->role === 'prof';
         });
     }
