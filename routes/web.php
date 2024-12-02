@@ -31,16 +31,13 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('evaluations', [EvaluationController::class, 'index'])->name('evaluations.index');
     Route::get('evaluations/{evaluation}', [EvaluationController::class, 'show'])->name('evaluations.show');
-
-    Route::get('evaluationEleve', [EvaluationEleveController::class, 'index'])->name('evaluationEleve.index');
-    Route::get('evaluationEleve/{evaluationEleve}', [EvaluationEleveController::class, 'show'])->name('evaluationEleve.show');
 });
 
 Route::middleware(['auth', 'can:prof'])->group(function () {
-    Route::resource('eleves', ModuleController::class);
+    Route::resource('eleves', EleveController::class);
     Route::resource('modules', ModuleController::class);
-    Route::resource('evaluations', ModuleController::class);
-    Route::resource('evaluationEleve', ModuleController::class);
+    Route::resource('evaluations', EvaluationController::class);
+    Route::resource('evaluationEleve', EvaluationEleveController::class);
 });
 
 //Notes
