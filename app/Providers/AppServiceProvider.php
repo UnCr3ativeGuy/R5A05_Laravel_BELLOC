@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +20,20 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Gate::define('manage-eleves', function ($user) {
+            return $user->role === 'prof';
+        });
+
+        Gate::define('manage-modules', function ($user) {
+            return $user->role === 'prof';
+        });
+
+        Gate::define('manage-evaluations', function ($user) {
+            return $user->role === 'prof';
+        });
+
+        Gate::define('manage-evaluationEleve', function ($user) {
+            return $user->role === 'prof';
+        });
     }
 }
