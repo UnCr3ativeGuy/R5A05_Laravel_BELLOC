@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\NewNoteNotification;
 use App\Models\EvaluationEleve;
 use App\Models\Evaluation;
 use App\Models\Eleve;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class EvaluationEleveController extends Controller
@@ -35,7 +37,9 @@ class EvaluationEleveController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        EvaluationEleve::create($request->all());
+        $note = EvaluationEleve::create($request->all());
+
+        Mail::to($note->eleve->email)->send(new NewNoteNotification($note));
 
         return redirect()->route('evaluationEleve.index')->with('success', 'Note ajoutée avec succès!');
     }
