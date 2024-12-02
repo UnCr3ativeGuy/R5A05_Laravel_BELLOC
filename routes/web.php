@@ -36,7 +36,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('evaluationEleve/{evaluationEleve}', [EvaluationEleveController::class, 'show'])->name('evaluationEleve.show');
 });
 
-Route::middleware(['auth', 'prof'])->group(function () {
+Route::middleware(['auth', 'can:prof'])->group(function () {
     Route::resource('eleves', ModuleController::class);
     Route::resource('modules', ModuleController::class);
     Route::resource('evaluations', ModuleController::class);
